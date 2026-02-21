@@ -6,7 +6,7 @@ export default function Home() {
       {/* 1. HEADER */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-blue-primary rounded-lg flex items-center justify-center text-white font-urbain text-2xl">UB</div>
+          <div className="w-10 h-10 bg-blue-primary rounded-lg flex items-center justify-center text-white font-urbain text-2xl"><img src="under.PNG" alt="logo" /></div>
           <span className="font-urbain text-2xl tracking-tight">UNDERGROUND <span className="italic text-red-accent">BOUGE</span></span>
         </div>
         
@@ -18,15 +18,17 @@ export default function Home() {
           <a href="#contact" className="hover:text-red-accent transition-colors">Contact</a>
         </nav>
 
-        <a href="#join" className="btn-primary py-2 text-sm">Rejoindre le mouvement</a>
+        <a href="#join" className="hidden sm:flex md:hidden btn-primary py-2 text-sm "><img src="/list.svg" alt="Menu" /></a>
+        <a href="#join" className="hidden md:flex btn-primary py-2 text-sm ">Rejoindre le mouvement</a>
       </header>
 
       <main>
         {/* 2. HERO SECTION */}
         <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-gray-dark">
-            <Image 
-              src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=2070&auto=format&fit=crop"
+
+          <Image 
+              src="/bgunder.PNG "
               alt="Live concert atmosphere"
               fill
               className="object-cover opacity-40"
@@ -41,7 +43,7 @@ export default function Home() {
               <span className="text-red-accent">URBAINS DU BÉNIN</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-10 font-light max-w-2xl mx-auto">
-              Underground Bouge accompagne, promeut et propulse la nouvelle génération d'artistes urbains.
+              Underground Bouge accompagne, promeut et propulse la nouvelle génération d'artistes urbains ainsi que les radios partenaires. La promotion des marques et partenaires est de mise par le "PULL STRATEGY" 
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="#artist" className="btn-primary text-lg">Devenir artiste</a>
@@ -74,7 +76,7 @@ export default function Home() {
                 </p>
               </div>
               
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-12">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-12"> 
                 {[
                   { label: "Open Shows", value: "07" },
                   { label: "Participants", value: "150+" },
@@ -91,7 +93,7 @@ export default function Home() {
             
             <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
               <Image 
-                src="https://images.unsplash.com/photo-1514525253361-bee87184919a?q=80&w=1915&auto=format&fit=crop"
+                src="/under.PNG"
                 alt="Open Show event"
                 fill
                 className="object-cover"
@@ -108,24 +110,40 @@ export default function Home() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: "Promotion digitale", color: "blue" },
-              { title: "Diffusion radio", color: "red" },
-              { title: "Organisation d’Open Show", color: "blue" },
-              { title: "Accompagnement artistique", color: "red" },
-              { title: "Mise en relation", color: "blue" },
-            ].map((s, i) => (
-              <div key={i} className="card group cursor-pointer">
-                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors ${s.color === 'blue' ? 'bg-blue-primary/10 text-blue-primary' : 'bg-red-accent/10 text-red-accent'} group-hover:bg-red-accent group-hover:text-white`}>
+            
+             
+              <div className="card group cursor-pointer">
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors bg-blue-primary/10 text-blue-primary' : 'bg-red-accent/10 text-red-accent'} group-hover:bg-red-accent group-hover:text-white`}>
                   {/* Icon placeholder */}
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{s.title}</h3>
-                <p className="text-gray-500">Une expertise dédiée à l'accélération de votre carrière et à votre visibilité médiatique.</p>
+                <h3 className="text-xl font-bold mb-3">Communication Digitale</h3>
+                <p className="text-gray-500">Notre initiative s’étant donné le challenge de rallier tous les passionnés via le net, notre mix communicationnel est plus basé sur les différents réseaux sociaux que sont Facebook et WhatsApp. Un réseau de partage et d’identification très actif qui a été initié et mis en place pour assurer le relai sur la toile.</p>
               </div>
-            ))}
+               <div className="card group cursor-pointer">
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors bg-blue-primary/10 text-blue-primary' : 'bg-red-accent/10 text-red-accent'} group-hover:bg-red-accent group-hover:text-white`}>
+                  {/* Icon placeholder */}
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Communication Radio</h3>
+                <p className="text-gray-500">En collaboration avec plusieurs radios du Bénin, les chansons des artistes promus sont diffusées durant toute la période. Entre autres partenaires media, nous pouvons citer les émissions telles que : Hip-Hop Horizon de la radio Carrefour dans le centre du pays, Rap Sentence de Radio Bénin Culture dans l’Ouémé et Top Star Urban Show de la radio Gerddès Fm toujours dans l’Ouémé. De nombreux autres radios et émissions sont actuellement en pourparlers avec les gestionnaires du projet afin de se hisser au rang des partenaires. </p>
+              </div>
+              <div className="card group cursor-pointer">
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors bg-blue-primary/10 text-blue-primary' : 'bg-red-accent/10 text-red-accent'} group-hover:bg-red-accent group-hover:text-white`}>
+                  {/* Icon placeholder */}
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Communication Visuelle</h3>
+                <p className="text-gray-500">une chaîne YouTube est dédiée spécialement pour le partage des différents spots publicitaires du projet, le visuel de nos différents spectacles, des freestyles party…</p>
+              </div>
+            
+            
           </div>
         </section>
 
@@ -157,23 +175,53 @@ export default function Home() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((t) => (
-              <div key={t} className="bg-white p-8 rounded-2xl text-gray-dark relative">
+            
+              <div className="bg-white p-8 rounded-2xl text-gray-dark relative">
                 <div className="text-red-accent text-5xl font-serif absolute top-4 left-4 opacity-20">“</div>
                 <p className="relative z-10 mb-6 italic">
-                  "Underground Bouge m'a donné ma première scène et m'a permis de structurer mon image d'artiste. Un passage obligé."
+                  "Underground Bouge a été le premier média à soutenir mes initiatives depuis plus de 4 ans."
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden relative">
-                    <Image src={`https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop`} alt="Artist" fill className="object-cover" />
+                    <Image src={`/Yoan.jpeg`} alt="Yoan" fill className="object-cover" />
                   </div>
                   <div>
-                    <div className="font-bold">Artiste Nom</div>
-                    <div className="text-sm text-gray-500">Rappeur / Compositeur</div>
+                    <div className="font-bold">Yoan Melson DANSOU</div>
+                    <div className="text-sm text-gray-500">CEO/FuturCraft Institut</div>
                   </div>
                 </div>
               </div>
-            ))}
+               <div className="bg-white p-8 rounded-2xl text-gray-dark relative">
+                <div className="text-red-accent text-5xl font-serif absolute top-4 left-4 opacity-20">“</div>
+                <p className="relative z-10 mb-6 italic">
+                  "Underground Bouge a été un canal actif pour nous. Je vous invite humblement à vous abonner"
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden relative">
+                    <Image src={`/FatB.jpeg`} alt="Fat" fill className="object-cover" />
+                  </div>
+                  <div>
+                    <div className="font-bold">Fat B</div>
+                    <div className="text-sm text-gray-500">Artiste/Rapeur</div>
+                  </div>
+                </div>
+              </div>
+             <div className="bg-white p-8 rounded-2xl text-gray-dark relative">
+                <div className="text-red-accent text-5xl font-serif absolute top-4 left-4 opacity-20">“</div>
+                <p className="relative z-10 mb-6 italic">
+                  "Underground Bouge, l'une des meilleures pages culturelles que je suivais a été désactivée.Je vous recommande de vous abonné."
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden relative">
+                    <Image src={`/Miagones.jpeg`} alt="Miagones" fill className="object-cover" />
+                  </div>
+                  <div>
+                    <div className="font-bold">Miagones</div>
+                    <div className="text-sm text-gray-500">Créateur Digital</div>
+                  </div>
+                </div>
+              </div>
+            
           </div>
         </section>
 
@@ -205,12 +253,12 @@ export default function Home() {
                 <h3 className="text-2xl font-bold mb-8">Informations</h3>
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
-                    <span className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">📧</span>
-                    <span>contact@undergroundbouge.bj</span>
+                    <span className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center"><img src="envelope.svg" alt="Mail" /></span>
+                    <span>undergroundbouge@gmail.com</span>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">📞</span>
-                    <span>+229 97 00 00 00</span>
+                    <span className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center"><img src="/telephone.svg" alt="Call" /></span>
+                    <span>+229 01 67 27 52 68</span>
                   </div>
                 </div>
               </div>
@@ -218,9 +266,9 @@ export default function Home() {
               <div className="mt-12">
                 <h3 className="text-xl font-bold mb-6">Suivez-nous</h3>
                 <div className="flex gap-4">
-                  <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-red-accent transition-colors">FB</a>
-                  <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-red-accent transition-colors">YT</a>
-                  <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-red-accent transition-colors">IG</a>
+                  <a href="https://www.facebook.com/undergroundbougelevrai" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-red-accent transition-colors"><img src="facebook.svg" alt="Facebook" /></a>
+                  <a href="https://www.tiktok.com/@underground_bouge?_r=1&_t=ZS-946m2AOZ8sv" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-red-accent transition-colors"><img src="tiktok.svg" alt="Tiktok" /></a>
+                  
                 </div>
               </div>
             </div>
