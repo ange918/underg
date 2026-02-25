@@ -1,13 +1,20 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* 1. HEADER */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-blue-primary rounded-lg flex items-center justify-center text-white font-urbain text-2xl"><img src="under.PNG" alt="logo" /></div>
-          <span className="font-urbain text-2xl tracking-tight">UNDERGROUND <span className="italic text-red-accent">BOUGE</span></span>
+          <div className="w-10 h-10 bg-blue-primary rounded-lg flex items-center justify-center text-white font-urbain text-2xl overflow-hidden">
+            <img src="under.PNG" alt="logo" className="w-full h-full object-cover" />
+          </div>
+          <span className="font-urbain text-2xl tracking-tight uppercase">UNDERGROUND <span className="italic text-red-accent">BOUGE</span></span>
         </div>
         
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
@@ -18,8 +25,34 @@ export default function Home() {
           <a href="#contact" className="hover:text-red-accent transition-colors">Contact</a>
         </nav>
 
-        <a href="#join" className="hidden sm:flex md:hidden btn-primary py-2 text-sm "><img src="/list.svg" alt="Menu" /></a>
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden p-2 text-gray-600 hover:text-red-accent transition-colors focus:outline-none"
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? (
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          )}
+        </button>
         <a href="#join" className="hidden md:flex btn-primary py-2 text-sm ">Rejoindre le mouvement</a>
+
+        {/* Mobile Menu Overlay */}
+        {isMenuOpen && (
+          <div className="absolute top-full left-0 right-0 bg-white border-b border-gray-100 p-6 flex flex-col gap-4 md:hidden shadow-xl animate-fade-in">
+            <a href="#" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium hover:text-red-accent transition-colors">Accueil</a>
+            <a href="#about" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium hover:text-red-accent transition-colors">À propos</a>
+            <a href="#services" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium hover:text-red-accent transition-colors">Services</a>
+            <a href="#openshow" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium hover:text-red-accent transition-colors">Open Show</a>
+            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium hover:text-red-accent transition-colors">Contact</a>
+            <a href="#join" onClick={() => setIsMenuOpen(false)} className="btn-primary text-center py-3">Rejoindre le mouvement</a>
+          </div>
+        )}
       </header>
 
       <main>
@@ -43,7 +76,7 @@ export default function Home() {
               <span className="text-red-accent">URBAINS DU BÉNIN</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-10 font-light max-w-2xl mx-auto">
-              Underground Bouge accompagne, promeut et propulse la nouvelle génération d'artistes urbains ainsi que les radios partenaires. La promotion des marques et partenaires est de mise par le "PULL STRATEGY" 
+              Underground Bouge accompagne, promeut et propulse la nouvelle génération d'artistes urbains à travers des événements et des battles. La promotion des marques et partenaires est de mise par le "PULL STRATEGY".
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="#artist" className="btn-primary text-lg">Devenir artiste</a>
@@ -113,7 +146,7 @@ export default function Home() {
             
              
               <div className="card group cursor-pointer">
-                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors bg-blue-primary/10 text-blue-primary' : 'bg-red-accent/10 text-red-accent'} group-hover:bg-red-accent group-hover:text-white`}>
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors bg-blue-primary/10 text-blue-primary group-hover:bg-red-accent group-hover:text-white`}>
                   {/* Icon placeholder */}
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -123,17 +156,18 @@ export default function Home() {
                 <p className="text-gray-500">Notre initiative s’étant donné le challenge de rallier tous les passionnés via le net, notre mix communicationnel est plus basé sur les différents réseaux sociaux que sont Facebook et WhatsApp. Un réseau de partage et d’identification très actif qui a été initié et mis en place pour assurer le relai sur la toile.</p>
               </div>
                <div className="card group cursor-pointer">
-                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors bg-blue-primary/10 text-blue-primary' : 'bg-red-accent/10 text-red-accent'} group-hover:bg-red-accent group-hover:text-white`}>
-                  {/* Icon placeholder */}
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors bg-blue-primary/10 text-blue-primary group-hover:bg-red-accent group-hover:text-white`}>
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold mb-3">Communication Radio</h3>
-                <p className="text-gray-500">En collaboration avec plusieurs radios du Bénin, les chansons des artistes promus sont diffusées durant toute la période. Entre autres partenaires media, nous pouvons citer les émissions telles que : Hip-Hop Horizon de la radio Carrefour dans le centre du pays, Rap Sentence de Radio Bénin Culture dans l’Ouémé et Top Star Urban Show de la radio Gerddès Fm toujours dans l’Ouémé. De nombreux autres radios et émissions sont actuellement en pourparlers avec les gestionnaires du projet afin de se hisser au rang des partenaires. </p>
+                <h3 className="text-xl font-bold mb-3 uppercase">Battles & Compétitions</h3>
+                <p className="text-gray-500">
+                  Nous organisons des battles épiques et des compétitions de haut niveau pour mettre à l'épreuve les compétences des artistes urbains. Que ce soit en danse, rap freestyle ou beatmaking, nos compétitions offrent une visibilité exceptionnelle et des opportunités de networking uniques au sein de la scène culturelle béninoise.
+                </p>
               </div>
               <div className="card group cursor-pointer">
-                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors bg-blue-primary/10 text-blue-primary' : 'bg-red-accent/10 text-red-accent'} group-hover:bg-red-accent group-hover:text-white`}>
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors bg-blue-primary/10 text-blue-primary group-hover:bg-red-accent group-hover:text-white`}>
                   {/* Icon placeholder */}
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
