@@ -1,7 +1,60 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+
+function Counter({ value, duration = 2000 }: { value: string; duration?: number }) {
+  const [count, setCount] = useState(0);
+  const countRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Extract numeric value and suffix
+  const numericValue = parseInt(value.replace(/\D/g, ""));
+  const suffix = value.replace(/[0-9]/g, "");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (countRef.current) {
+      observer.observe(countRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let start = 0;
+    const end = numericValue;
+    if (start === end) return;
+
+    const totalMiliseconds = duration;
+    const incrementTime = totalMiliseconds / end;
+
+    const timer = setInterval(() => {
+      start += 1;
+      setCount(start);
+      if (start === end) clearInterval(timer);
+    }, incrementTime);
+
+    return () => clearInterval(timer);
+  }, [isVisible, numericValue, duration]);
+
+  return (
+    <div ref={countRef} className="font-urbain text-4xl text-red-accent">
+      {count}
+      {suffix}
+    </div>
+  );
+}
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -117,7 +170,7 @@ export default function Home() {
                   { label: "Depuis", value: "2017" },
                 ].map((stat, i) => (
                   <div key={i} className="text-center">
-                    <div className="font-urbain text-4xl text-red-accent">{stat.value}</div>
+                    <Counter value={stat.value} />
                     <div className="text-xs uppercase tracking-wider font-semibold text-gray-400 mt-1">{stat.label}</div>
                   </div>
                 ))}
